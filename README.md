@@ -28,7 +28,7 @@ Under development ...
 - Open any file in Visual Studio Code (enable "workbench.action.terminal.runSelectedText").
 - Click `Cake` icon in Task bar.
 - Select task name in Quick Pick dialog.
-- See output in Termimal.
+- See output in Terminal.
 
 ## Note
 
