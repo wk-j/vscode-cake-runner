@@ -1,4 +1,8 @@
 import * as vscode from "vscode";
+import * as os from "os";
+
+let eol = os.EOL;
+let windows = os.platform() === "win32";
 
 export class Cake {
     
@@ -7,7 +11,6 @@ export class Cake {
     watcher: vscode.FileSystemWatcher; 
     
     constructor() {
-        this.tasks.push({ label:"./build.sh --target Default", description: "A"});
         this.initialize();
         this.register();
     }
@@ -18,18 +21,50 @@ export class Cake {
         });
     }
     
+    private createBuildCommand(taskName) {
+        if(windows) {
+            return `build.ps1 -target \"${taskName}\"`
+        }else {
+            return `./build.sh --target \"${taskName}\"`;
+        }
+    }
+    
+    private getDefaultBootstrap() {
+        if(windows) return "build.ps1";
+        else return "build.sh";
+    }
+    
+    private getCakeScript() {
+        return "build.cake";
+    }
+    
+    private findTasks(text: string) : string [] {
+        let lines = text.split(eol);
+        let taskLines = lines.filter(x => x.indexOf("Task(\"") !== -1);
+        let tasks = taskLines.map(x => x.match(/"(.*?)"/)[1]);
+        return tasks;
+    }
+    
     updateTask(file: vscode.Uri) {
         let open = vscode.workspace.openTextDocument(file.fsPath);
         open.then(file => {
             let text = file.getText();
-            console.log(text);
+            let tasks = this.findTasks(text)
+            this.tasks = [];
+            
+            tasks.forEach(x => {
+                let task = { label : x, description: "" };
+                this.tasks.push(task);
+            });
         });
     }
     
     private initializeTasks() {
-        let find = vscode.workspace.findFiles("build.cake", "", 1);
+        let script = this.getCakeScript();
+        let find = vscode.workspace.findFiles("build.cake", "**/node_modules/**", 1);
         find.then(files => {
-            if(files.length > 0) this.updateTask(files[0]);
+            if(files.length > 0) 
+                this.updateTask(files[0]);
         })
     }
     
@@ -62,7 +97,7 @@ export class Cake {
 
         if(!this.staticBarItem) {
             this.staticBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
-            this.staticBarItem.text = "Cake";
+            this.staticBarItem.text = "$(terminal) Cake";
             this.staticBarItem.command = "cakeRunner.showTasks";
             this.staticBarItem.show();
         }
@@ -73,7 +108,8 @@ export class Cake {
         let quickPick = vscode.window.showQuickPick(this.tasks, options);
         quickPick.then(result => {
             var task = result.label;
-            this.runCommand(task);
+            var command = this.createBuildCommand(task);
+            this.runCommand(command);
         });
     }
     
