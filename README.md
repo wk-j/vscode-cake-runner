@@ -2,6 +2,8 @@
 
 Execute Cake task in Visual Studio Code.
 
+![](images/runner.png)
+
 Under development ...
 
 ## Support
@@ -18,8 +20,15 @@ Under development ...
 
 ## Install
 
-- <kbd>Command</kbd>+<kbd>P</kbd>
+- <kbd>Command</kbd> + <kbd>P</kbd>
 - ext install cake-runner
+
+## Usage
+
+- Open any file in Visual Studio Code (enable "workbench.action.terminal.runSelectedText").
+- Click `Cake` icon in Task bar.
+- Select task name in Quick Pick dialog.
+- See output in Termimal.
 
 ## Note
 
