@@ -4,12 +4,10 @@ Execute Cake task in Visual Studio Code.
 
 ![](https://github.com/wk-j/vscode-cake-runner/raw/master/images/runner.png)
 
-Under development ...
-
 ## Support
 
 - [x] macOS
-- [ ] Windows
+- [x] Windows
 
 ## Requirement
 

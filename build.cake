@@ -1,5 +1,11 @@
 #addin "nuget:?package=Cake.SquareLogo"
 
+Task("Publish").Does(() => {
+    StartProcess("vsce", new ProcessSettings {
+        Arguments = "publish"
+    });
+});
+
 Task("Icon").Does(() =>{
     CreateLogo("Cake", "images/icon.png", new LogoSettings {
         Background = "Green",

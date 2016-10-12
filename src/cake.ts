@@ -1,7 +1,9 @@
 import * as vscode from "vscode";
 import * as os from "os";
 
-let eol = os.EOL;
+//let eol = os.EOL;
+let eol = '\n';
+
 let windows = os.platform() === "win32";
 
 export class Cake {
@@ -23,15 +25,10 @@ export class Cake {
     
     private createBuildCommand(taskName) {
         if(windows) {
-            return `build.ps1 -target \"${taskName}\"`
+            return `powershell -file build.ps1 -target \"${taskName}\"`
         }else {
             return `./build.sh --target \"${taskName}\"`;
         }
-    }
-    
-    private getDefaultBootstrap() {
-        if(windows) return "build.ps1";
-        else return "build.sh";
     }
     
     private getCakeScript() {
