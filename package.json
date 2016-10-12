@@ -1,8 +1,8 @@
 {
     "name": "cake-runner",
     "displayName": "Cake Runner",
-    "description": "Execute Cake task from Visual Studio Code",
-    "version": "0.0.2",
+    "description": "Execute Cake task in Visual Studio Code",
+    "version": "0.0.3",
     "publisher": "wk-j",
     "repository": {
         "type": "git",
