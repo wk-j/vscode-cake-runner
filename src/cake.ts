@@ -22,10 +22,13 @@ export class Cake {
             this.showTasks();
         });
     }
+
     
     private createBuildCommand(taskName) {
         if(windows) {
-            return `powershell -file build.ps1 -target \"${taskName}\"`
+            //return `powershell -file build.ps1 -target \"${taskName}\"`
+            return `powershell -ExecutionPolicy ByPass -File build.ps1 -target \"${taskName}\"`;
+    
         }else {
             return `./build.sh --target \"${taskName}\"`;
         }
