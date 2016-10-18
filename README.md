@@ -16,15 +16,15 @@ Execute Cake task in Visual Studio Code.
   - `build.sh` for macOS
   - `build.ps1` for Windows
 
-## Install
+## Installation
 
-- <kbd>Command</kbd> + <kbd>P</kbd>
+- <kbd>CMD</kbd> + <kbd>P</kbd>
 - ext install cake-runner
 
 ## Usage
 
 - Open any file in Visual Studio Code (enable `workbench.action.terminal.runSelectedText`).
-- Click **Cake** icon in Status Bar.
+- Click **Cake** icon in Status Bar or <kbd>ALT</kbd> + <kbd>CMD</kbd> + <kbd>T</kbd>
 - Select task name in Quick Pick Dialog.
 - See output in Terminal.
 

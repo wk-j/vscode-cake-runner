@@ -103,7 +103,7 @@ export class Cake {
         }
     }
     
-    private showTasks() {
+    public showTasks() {
         let options = { placeholder : "Enter task name"};
         let quickPick = vscode.window.showQuickPick(this.tasks, options);
         quickPick.then(result => {
