@@ -85,8 +85,10 @@ export class Cake {
             edits.insert(startPos, '\n' + result);
         }).then(() => {
             this.showTerminal();
+            vscode.commands.executeCommand("workbench.action.focusActiveEditorGroup");
             editor.selection = newSelection;
             vscode.commands.executeCommand('workbench.action.terminal.runSelectedText');
+
             vscode.commands.executeCommand('undo');
         }, ()  => {
             vscode.window.showErrorMessage("Unable to run task");
