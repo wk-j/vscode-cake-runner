@@ -21,8 +21,12 @@ export class Cake {
         vscode.commands.registerCommand("cakeRunner.showTasks", () => {
             this.showTasks();
         });
-    }
 
+        vscode.commands.registerCommand("cakeRunner.runTask", (arg) => {
+            var command = this.createBuildCommand(arg);
+            this.runCommand(command);
+        });        
+    }
 
     private createBuildCommand(taskName) {
         if (windows) {
