@@ -1,5 +1,7 @@
 import * as vscode from "vscode";
 import * as os from "os";
+import * as ncp  from "copy-paste";
+var endOfLine = require('os').EOL;
 
 //let eol = os.EOL;
 let eol = '\n';
@@ -76,27 +78,17 @@ export class Cake {
         vscode.commands.executeCommand("workbench.action.terminal.focus");
     }
 
-    private runCommand(result) {
+    private runCommand(command)  {
         let editor = vscode.window.activeTextEditor;
-        let document = editor.document;
-        let eol = editor.document.lineCount + 1;
-        let position = editor.selection.active;
-        var startPos = new vscode.Position(eol, 0);
-        var endPos = new vscode.Position(eol, result.length);
-        var selStartPos = new vscode.Position(eol - 1, 0);
-        var newSelection = new vscode.Selection(selStartPos, endPos);
-        editor.edit((edits) => {
-            edits.insert(startPos, '\n' + result);
-        }).then(() => {
-            this.showTerminal();
-            vscode.commands.executeCommand("workbench.action.focusActiveEditorGroup");
-            editor.selection = newSelection;
-            vscode.commands.executeCommand('workbench.action.terminal.runSelectedText');
-
-            vscode.commands.executeCommand('undo');
-        }, ()  => {
-            vscode.window.showErrorMessage("Unable to run task");
-        })
+        ncp.copy(command + endOfLine, function () {
+            vscode.commands.executeCommand("workbench.action.terminal.focus").then(() => {
+                vscode.commands.executeCommand("workbench.action.terminal.paste"); 
+                var editor = vscode.window.activeTextEditor;
+                if(editor) {
+                    editor.show();
+                }
+            });
+		});
     }
 
     private initialize() {
