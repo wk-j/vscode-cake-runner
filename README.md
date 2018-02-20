@@ -12,9 +12,9 @@ Execute Cake task in Visual Studio Code.
 ## Requirement
 
 - `build.cake`
-- Cake bootstrap 
-  - `build.sh` for macOS
-  - `build.ps1` for Windows
+- Cake CLI
+  - `brew install cake` for macOS
+  - `choco install cake.portable` for Windows
 
 ## Installation
 
@@ -23,11 +23,7 @@ Execute Cake task in Visual Studio Code.
 
 ## Usage
 
-- Open any file in Visual Studio Code (enable `workbench.action.terminal.runSelectedText`).
+- Open any file in Visual Studio Code
 - Click **Cake** icon in Status Bar or <kbd>ALT</kbd> + <kbd>CMD</kbd> + <kbd>T</kbd>
 - Select task name in Quick Pick Dialog.
 - See output in Terminal.
-
-## Note
-
-- You can install Cake bootstrap with [official extension](https://marketplace.visualstudio.com/items?itemName=cake-build.cake-vscode).
