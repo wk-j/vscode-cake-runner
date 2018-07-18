@@ -42,7 +42,7 @@ export class Cake {
         } else {
             const sh = path.join(root, "build.sh")
             if (fs.existsSync(sh)) {
-                return `./build.sh --target \"${taskName}\"`
+                return `./build.sh --target=\"${taskName}\"`
             } else {
                 return `cake -target=\"${taskName}\"`
             }
