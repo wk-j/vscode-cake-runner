@@ -2,6 +2,8 @@
 
 Execute Cake task in Visual Studio Code.
 
+[![Version](https://vsmarketplacebadge.apphb.com/version/wk-j.cake-runner.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.cake-runner) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/wk-j.cake-runner.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.cake-runner)
+
 ![](https://github.com/wk-j/vscode-cake-runner/raw/master/images/runner.png)
 
 ## Support
