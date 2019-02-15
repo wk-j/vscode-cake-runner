@@ -4,6 +4,8 @@ Execute Cake task in Visual Studio Code.
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/wk-j.cake-runner.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.cake-runner) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/wk-j.cake-runner.svg)](https://marketplace.visualstudio.com/items?itemName=wk-j.cake-runner)
 
+Warning: This is unofficial extension please check [cake-vscode](https://marketplace.visualstudio.com/items?itemName=cake-build.cake-vscode) extension that provide more functionality.
+
 ![](https://github.com/wk-j/vscode-cake-runner/raw/master/images/runner.png)
 
 ## Support
@@ -13,10 +15,17 @@ Execute Cake task in Visual Studio Code.
 
 ## Requirement
 
-- `build.cake`
-- Cake CLI
+1. `build.cake`
+
+2. Cake CLI or Cake bootstraper
+
+How to install Cake CLI
+
   - `brew install cake` for macOS
   - `choco install cake.portable` for Windows
+
+How to install Cake bootstrapper
+  - Use [official cake extension](https://marketplace.visualstudio.com/items?itemName=cake-build.cake-vscode)
 
 ## Installation
 

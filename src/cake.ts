@@ -1,4 +1,6 @@
+import * as fs from "fs"
 import * as os from "os"
+import * as path from "path"
 import * as vscode from "vscode"
 import { Executor } from "./executor"
 
@@ -29,10 +31,21 @@ export class Cake {
     }
 
     private createBuildCommand(taskName) {
+        const root = vscode.workspace.rootPath
         if (windows) {
-            return `cake -target=\"${taskName}\"`
+            const ps1 = path.join(root, "build.ps1")
+            if (fs.existsSync(ps1)) {
+                return `powershell -ExecutionPolicy ByPass -File build.ps1 -target \"${taskName}\"`
+            } else {
+                return `cake -target=\"${taskName}\"`
+            }
         } else {
-            return `cake -target=\"${taskName}\"`
+            const sh = path.join(root, "build.sh")
+            if (fs.existsSync(sh)) {
+                return `./build.sh --target=\"${taskName}\"`
+            } else {
+                return `cake -target=\"${taskName}\"`
+            }
         }
     }
 
