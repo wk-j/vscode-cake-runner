@@ -35,7 +35,7 @@ export class Cake {
         if (windows) {
             const ps1 = path.join(root, "build.ps1")
             if (fs.existsSync(ps1)) {
-                return `powershell -ExecutionPolicy ByPass -File build.ps1 -target \"${taskName}\"`
+                return `powershell -ExecutionPolicy ByPass -File build.ps1 -target=\"${taskName}\"`
             } else {
                 return `cake -target=\"${taskName}\"`
             }
